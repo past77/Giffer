@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainGalleryFragment"
-        android:name="com.testtask.giphy.giffer.MainGalleryFragment"
+        android:name="com.testtask.giphy.giffer.ui.MainGalleryFragment"
         android:label="fragment_main_gallery"
         tools:layout="@layout/fragment_main_gallery" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/gifDetailsFragment"
-        android:name="com.testtask.giphy.giffer.GifDetailsFragment"
+        android:name="com.testtask.giphy.giffer.ui.GifDetailsFragment"
         android:label="fragment_gif_details"
         tools:layout="@layout/fragment_gif_details" />
 
