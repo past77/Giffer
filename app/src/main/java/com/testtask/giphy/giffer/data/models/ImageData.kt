@@ -1,6 +1,7 @@
-package com.testtask.giphy.giffer.models
+package com.testtask.giphy.giffer.data.models
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 

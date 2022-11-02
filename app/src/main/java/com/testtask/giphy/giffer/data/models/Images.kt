@@ -1,4 +1,4 @@
-package com.testtask.giphy.giffer.models
+package com.testtask.giphy.giffer.data.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

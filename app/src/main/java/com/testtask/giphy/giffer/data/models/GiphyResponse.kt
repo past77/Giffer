@@ -1,4 +1,4 @@
-package com.testtask.giphy.giffer.models
+package com.testtask.giphy.giffer.data.models
 
 data class GiphyResponse(
     val data: List<ImageData>,
