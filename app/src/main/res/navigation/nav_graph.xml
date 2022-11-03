@@ -18,6 +18,9 @@
         android:id="@+id/gifDetailsFragment"
         android:name="com.testtask.giphy.giffer.ui.GifDetailsFragment"
         android:label="fragment_gif_details"
-        tools:layout="@layout/fragment_gif_details" />
-
+        tools:layout="@layout/fragment_gif_details">
+    <argument
+        android:name="gif"
+        app:argType="com.testtask.giphy.giffer.data.models.ImageData" />
+    </fragment>
 </navigation>

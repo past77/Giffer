@@ -6,10 +6,14 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Original(
-    val height: String,
-    val width: String,
-    val size: String,
-    val url: String,
+    @SerializedName("height")
+    val originalHeight: String,
+    @SerializedName("width")
+    val originalWidth: String,
+    @SerializedName("size")
+    val originalSize: String,
+    @SerializedName("url")
+    val originalUrl: String,
     @SerializedName("mp4_size")
     val mp4Size: String,
     val mp4: String,

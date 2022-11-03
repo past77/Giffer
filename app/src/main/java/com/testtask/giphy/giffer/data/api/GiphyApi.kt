@@ -1,5 +1,6 @@
-package com.testtask.giphy.giffer.api
+package com.testtask.giphy.giffer.data.api
 
+import com.testtask.giphy.giffer.data.models.GiphyResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -17,10 +18,10 @@ interface GiphyApi {
         @Query("rating")
         rating: String = "g",
         @Query("limit")
-        maxObjectsNumber: Int = 5,
+        limit: Int = 5,
         @Query("lang")
         lang: String = "en"
-    )
+    ): GiphyResponse
 
     companion object {
         const val BASE_URL = "https://api.giphy.com/v1/gifs/"
