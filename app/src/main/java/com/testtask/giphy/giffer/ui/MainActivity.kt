@@ -1,7 +1,7 @@
 package com.testtask.giphy.giffer.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.testtask.giphy.giffer.R
 import dagger.hilt.android.AndroidEntryPoint
 

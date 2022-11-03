@@ -5,13 +5,13 @@ import androidx.paging.*
 import com.testtask.giphy.giffer.data.api.GiphyApi
 import com.testtask.giphy.giffer.data.db.GifDatabase
 import com.testtask.giphy.giffer.data.models.ImageData
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GiphyRepositoryImpl @Inject constructor(
     private val api: GiphyApi,
     private val database: GifDatabase
     ): GiphyRepository {
+
     @OptIn(ExperimentalPagingApi::class)
     override fun getGifs(query: String): LiveData<PagingData<ImageData>> {
         val pagingSourceFactory = { database.gifDao().getAllImageModel() }
@@ -22,8 +22,7 @@ class GiphyRepositoryImpl @Inject constructor(
         ).liveData
     }
 
-
-    fun getDefaultPageConfig(): PagingConfig {
+    private fun getDefaultPageConfig(): PagingConfig {
         return PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false)
     }
 

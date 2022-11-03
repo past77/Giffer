@@ -1,13 +1,11 @@
 package com.testtask.giphy.giffer.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.testtask.giphy.giffer.databinding.GifItemBinding
 import com.testtask.giphy.giffer.databinding.LoadStateFooterBinding
 
 class GifLoadStateAdapter(private val retry: () -> Unit) :
@@ -17,7 +15,7 @@ class GifLoadStateAdapter(private val retry: () -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
         binding =
-           LoadStateFooterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            LoadStateFooterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return LoadStateViewHolder(binding)
 
     }

@@ -1,7 +1,6 @@
 package com.testtask.giphy.giffer.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -10,14 +9,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.testtask.giphy.giffer.data.models.ImageData
 import com.testtask.giphy.giffer.databinding.GifItemBinding
-import com.testtask.giphy.giffer.viewmodels.GalleryViewModel
 
 class GifAdapter (
     private val listener: OnItemClickListener
 ) :
     PagingDataAdapter<ImageData, GifAdapter.GifViewHolder>(UserComparator) {
-
-//    private lateinit var binding: GifItemBinding
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -54,7 +50,6 @@ class GifAdapter (
                     .load(image.images.fixedHeightSmall.fixedHeightSmallUrl)
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
-//                    .error(R.drawable.ic_error)
                     .into(imageView)
 
                 tvGif.text = image.title

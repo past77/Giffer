@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -38,7 +35,6 @@ class GifDetailsFragment : Fragment() {
 
             Glide.with(this@GifDetailsFragment)
                 .load(photo.images.original.originalUrl)
-//                .error(R.drawable.ic_error)
                 .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -58,13 +54,11 @@ class GifDetailsFragment : Fragment() {
                         isFirstResource: Boolean
                     ): Boolean {
                         pbDetails.isVisible = false
-//                        tvTitle.isVisible = true
                         return false
                     }
                 })
                 .into(ivDetails)
 
-//            tvTitle.text = photo.title
         }
 
 

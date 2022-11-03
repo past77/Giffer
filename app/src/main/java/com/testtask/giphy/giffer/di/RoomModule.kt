@@ -2,6 +2,7 @@ package com.testtask.giphy.giffer.di
 
 import android.content.Context
 import androidx.room.Room
+import com.testtask.giphy.giffer.data.dao.DeletedItemsDao
 import com.testtask.giphy.giffer.data.dao.GifDao
 import com.testtask.giphy.giffer.data.db.GifDatabase
 import dagger.Module
@@ -28,8 +29,14 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun providesProductDao(imageDatabase: GifDatabase): GifDao {
-        return imageDatabase.gifDao()
+    fun providesGifDao(gifDatabase: GifDatabase): GifDao {
+        return gifDatabase.gifDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesDeletedItems(gifDatabase: GifDatabase): DeletedItemsDao {
+        return gifDatabase.deletedItemsDao()
     }
 
 }

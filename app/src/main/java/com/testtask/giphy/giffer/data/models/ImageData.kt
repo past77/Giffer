@@ -25,6 +25,5 @@ data class ImageData(
     val rating: String,
     val title: String,
     @Embedded
-    val images: Images
-
+    val images: Images,
 ) : Parcelable

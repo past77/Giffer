@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.testtask.giphy.giffer.R
 import com.testtask.giphy.giffer.data.models.ImageData
-import com.testtask.giphy.giffer.databinding.ActivityMainBinding.inflate
 import com.testtask.giphy.giffer.databinding.FragmentMainGalleryBinding
 import com.testtask.giphy.giffer.viewmodels.GalleryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,14 +31,11 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
     ): View {
         binding = FragmentMainGalleryBinding.inflate(layoutInflater)
         return binding.root
-//        return inflater.inflate(R.layout.fragment_main_gallery, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        println("R# - onViewCreated in  GalleryFragment")
         super.onViewCreated(view, savedInstanceState)
 
-        println("R# - onViewCreated in  GalleryFragment")
         val adapter = GifAdapter(this)
         binding.apply {
             recyclerView.setHasFixedSize(true)
@@ -56,7 +51,6 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
         }
 
         viewModel.gifs.observe(viewLifecycleOwner) {
-            println("R$ - observe")
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
 
@@ -70,11 +64,11 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
                 //empty view
                 if (loadState.source.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
-                    adapter.itemCount < 1) {
+                    adapter.itemCount < 1
+                ) {
                     recyclerView.isVisible = false
                     textViewEmpty.isVisible = true
-                }
-                else {
+                } else {
                     textViewEmpty.isVisible = false
                 }
             }
@@ -93,10 +87,10 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
                 }
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    viewModel.deleteGif(adapter.getGifId(viewHolder.adapterPosition))
+                    adapter.getGifId(viewHolder.absoluteAdapterPosition)?.let { viewModel.deleteGif(it) }
                     Toast.makeText(
                         context,
-                       "R.string.note_deleted",
+                        getString(R.string.gif_deleted),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -109,9 +103,12 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(image: ImageData) {
-        findNavController().navigate(MainGalleryFragmentDirections.actionMainGalleryFragmentToGifDetailsFragment(image))
+        findNavController().navigate(
+            MainGalleryFragmentDirections.actionMainGalleryFragmentToGifDetailsFragment(
+                image
+            )
+        )
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -122,7 +119,6 @@ class MainGalleryFragment : Fragment(), GifAdapter.OnItemClickListener {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                println("R# query - $query")
                 if (query != null) {
                     binding.recyclerView.scrollToPosition(0)
                     viewModel.searchGifs(query)
